@@ -2,7 +2,7 @@
 
 (* top =  1  *)
 (* src = "fsm_synth.v:1" *)
-module fsm_synth(clk, reset, data_in, err, nxt_err);
+module fsm_synth(clk, reset, data_input, err, nxt_err);
   (* src = "fsm_synth.v:23" *)
   wire [3:0] _000_;
   (* src = "fsm_synth.v:23" *)
@@ -92,7 +92,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   (* src = "fsm_synth.v:14" *)
   wire [3:0] counter;
   (* src = "fsm_synth.v:5" *)
-  input [15:0] data_in;
+  input [15:0] data_input;
   (* src = "fsm_synth.v:6" *)
   output err;
   (* src = "fsm_synth.v:7" *)
@@ -114,11 +114,11 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
     .Y(_018_)
   );
   NOT _085_ (
-    .A(data_in[2]),
+    .A(data_input[2]),
     .Y(_019_)
   );
   NOT _086_ (
-    .A(data_in[3]),
+    .A(data_input[3]),
     .Y(_020_)
   );
   NOT _087_ (
@@ -126,13 +126,13 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
     .Y(_021_)
   );
   NAND _088_ (
-    .A(data_in[12]),
-    .B(data_in[13]),
+    .A(data_input[12]),
+    .B(data_input[13]),
     .Y(_022_)
   );
   NAND _089_ (
-    .A(data_in[14]),
-    .B(data_in[15]),
+    .A(data_input[14]),
+    .B(data_input[15]),
     .Y(_023_)
   );
   NOR _090_ (
@@ -146,7 +146,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   );
   NAND _092_ (
     .A(counter[1]),
-    .B(data_in[1]),
+    .B(data_input[1]),
     .Y(_027_)
   );
   NOT _093_ (
@@ -155,7 +155,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   );
   NOR _094_ (
     .A(counter[1]),
-    .B(data_in[1]),
+    .B(data_input[1]),
     .Y(_029_)
   );
   NOT _095_ (
@@ -174,7 +174,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   );
   NAND _098_ (
     .A(counter[0]),
-    .B(data_in[0]),
+    .B(data_input[0]),
     .Y(_034_)
   );
   NOT _099_ (
@@ -183,7 +183,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   );
   NOR _100_ (
     .A(counter[0]),
-    .B(data_in[0]),
+    .B(data_input[0]),
     .Y(_037_)
   );
   NOT _101_ (
@@ -216,12 +216,12 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
     .Y(_043_)
   );
   NAND _107_ (
-    .A(data_in[3]),
+    .A(data_input[3]),
     .B(_021_),
     .Y(_044_)
   );
   NOR _108_ (
-    .A(data_in[3]),
+    .A(data_input[3]),
     .B(_021_),
     .Y(_045_)
   );
@@ -242,7 +242,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   );
   NOR _112_ (
     .A(_018_),
-    .B(data_in[2]),
+    .B(data_input[2]),
     .Y(_049_)
   );
   NAND _113_ (
@@ -257,7 +257,7 @@ module fsm_synth(clk, reset, data_in, err, nxt_err);
   );
   NAND _115_ (
     .A(_018_),
-    .B(data_in[2]),
+    .B(data_input[2]),
     .Y(_052_)
   );
   NOR _116_ (

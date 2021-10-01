@@ -26,13 +26,13 @@ module BancoPruebas();
 		 .data_input		(data_input[BUS_SIZE-1:0]));
 
         bus_synth bus_synth_inst(/*AUTOINST*/
-			     // Outputs
-			     .data_out_synth		(data_out_synth[15:0]),
-			     .output_control_synth	(output_control_synth[3:0]),
-			     // Inputs
-			     .clk		(clk),
-			     .data_input		(data_input[15:0]),
-			     .reset		(reset));
+		// Outputs
+		.data_out		(data_out_synth[15:0]),
+		.output_control	(output_control_synth[3:0]),
+		// Inputs
+		.clk		(clk),
+		.data_input		(data_input[15:0]),
+		.reset		(reset));
 
         fsm fsm_inst(/*AUTOINST*/
 			 // Outputs
@@ -44,8 +44,8 @@ module BancoPruebas();
 			 .data_input		(data_input[BUS_SIZE-1:0]));
 		fsm_synth fsm_sintetizado_inst(/*AUTOINST*/
 			// Outputs
-			.err_synth		(err_synth),
-			.nxt_err_synth		(nxt_err_synth),
+			.err		(err_synth),
+			.nxt_err		(nxt_err_synth),
 			// Inputs
 			.clk		(clk),
 			.data_input		(data_input[15:0]),

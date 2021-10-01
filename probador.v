@@ -4,11 +4,11 @@ output reg reset,
 output reg [BUS_SIZE-1:0] data_input,
 input [BUS_SIZE-1:0] data_out,
 input [WORD_NUM-1:0] output_control,
-input [BUS_SIZE-1:0] data_out_sintetizado,
-input [WORD_NUM-1:0] data_out_synth,
+input [BUS_SIZE-1:0] data_out_synth,
+input [WORD_NUM-1:0] output_control_synth,
 input err,
 input nxt_err,
-input err_sintetizado,
+input err_synth,
 input nxt_err_synth);
 
     initial begin

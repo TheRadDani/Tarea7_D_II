@@ -2,7 +2,7 @@ module fsm
 (
     input clk,
 	input reset,
-	input [BUS_SIZE-1:0] data_in,
+	input [BUS_SIZE-1:0] data_input,
     output reg err,
     output reg nxt_err
 );
@@ -44,7 +44,7 @@ module fsm
         next_state = state;
         case (state)
             RESET: begin
-                if ((data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_in[WORD_SIZE-1:0] == counter))begin
+                if ((data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_input[WORD_SIZE-1:0] == counter))begin
                     next_state = FIRST_PKG;
                     nxt_err = 0;
                 end
@@ -54,60 +54,60 @@ module fsm
             end
 
             FIRST_PKG: begin
-                if ((data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_in[WORD_SIZE-1:0] == counter))begin
+                if ((data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_input[WORD_SIZE-1:0] == counter))begin
                     next_state = REG_PKG;
                     nxt_err = 0;
                 end
-                else if (data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
+                else if (data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
                     next_state = F_ERR;
                     nxt_err = 1;
                 end
-                else if (data_in[WORD_SIZE-1:0] != counter)begin
+                else if (data_input[WORD_SIZE-1:0] != counter)begin
                     next_state = SEQ_ERR;
                     nxt_err = 1;
                 end
             end
 
             REG_PKG: begin
-                if ((data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_in[WORD_SIZE-1:0] == counter)) begin
+                if ((data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_input[WORD_SIZE-1:0] == counter)) begin
                     next_state = REG_PKG;
                     nxt_err = 0;
                 end
-                else if (data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
+                else if (data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
                     next_state = F_ERR;
                     nxt_err = 1;
                 end
-                else if (data_in[WORD_SIZE-1:0] != counter)begin
+                else if (data_input[WORD_SIZE-1:0] != counter)begin
                     next_state = SEQ_ERR;
                     nxt_err = 1;
                 end
             end
 
             F_ERR: begin
-                if ((data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_in[WORD_SIZE-1:0] == counter))begin
+                if ((data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_input[WORD_SIZE-1:0] == counter))begin
                     next_state = FIRST_PKG;
                     nxt_err = 0;
                 end
-                else if (data_in[WORD_SIZE-1:0] != counter)begin
+                else if (data_input[WORD_SIZE-1:0] != counter)begin
                     next_state = SEQ_ERR;
                     nxt_err = 1;
                 end
-                else if (data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
+                else if (data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
                     next_state = F_ERR;
                     nxt_err = 1;
                 end
             end
 
             SEQ_ERR: begin
-                if ((data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_in[WORD_SIZE-1:0] == counter))begin
+                if ((data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] == 'hF) && (data_input[WORD_SIZE-1:0] == counter))begin
                     next_state = FIRST_PKG;
                     nxt_err = 0;
                 end
-                else if (data_in[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
+                else if (data_input[BUS_SIZE-1:BUS_SIZE-WORD_SIZE] != 'hF) begin
                     next_state = F_ERR;
                     nxt_err = 1;
                 end
-                else if (data_in[WORD_SIZE-1:0] != counter)begin
+                else if (data_input[WORD_SIZE-1:0] != counter)begin
                     next_state = SEQ_ERR;
                     nxt_err = 1;
                 end
