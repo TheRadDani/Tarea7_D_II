@@ -41,14 +41,15 @@ module BancoPruebas();
 			 // Inputs
 			 .clk			(clk),
 			 .reset			(reset),
-			 .data_input		(data_input[BUS_SIZE-1:0]ynth fsm_sintetizado_inst(/*AUTOINST*/
-				     // Outputs
-				     .err_synth		(err_synth),
-				     .nxt_err_synth		(nxt_err_synth),
-				     // Inputs
-				     .clk		(clk),
-				     .data_input		(data_input[15:0]),
-				     .reset		(reset));
+			 .data_input		(data_input[BUS_SIZE-1:0]));
+		fsm_synth fsm_sintetizado_inst(/*AUTOINST*/
+			// Outputs
+			.err_synth		(err_synth),
+			.nxt_err_synth		(nxt_err_synth),
+			// Inputs
+			.clk		(clk),
+			.data_input		(data_input[15:0]),
+			.reset		(reset));
 
         probador probador_inst(/*AUTOINST*/
 			   // Outputs
